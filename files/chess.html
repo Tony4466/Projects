@@ -1,92 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Chess Game</title>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
-<style>
-    body { font-family: Arial; text-align:center; }
-    canvas { border:1px solid black; margin-top:20px; }
-</style>
+    <meta charset="UTF-8">
+    <title>Chess Engine Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f7f7;
+            color: #222;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: flex-start;
+        }
+
+        .text {
+            flex: 1;
+        }
+
+        .video {
+            flex: 1;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .download {
+            margin-top: 20px;
+        }
+
+        .download a {
+            display: inline-block;
+            padding: 10px 16px;
+            background-color: #2b6cb0;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .download a:hover {
+            background-color: #1e4e8c;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Mobile layout */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-<body onload="brython()">
 
-<h1>Chess Game</h1>
-<canvas id="chessboard" width="480" height="480"></canvas>
+<body>
 
-<script type="text/python">
-from browser import document, html
-canvas = document["chessboard"]
-ctx = canvas.getContext("2d")
+<div class="container">
+    <!-- LEFT: DESCRIPTION -->
+    <div class="text">
+        <h1>Python Chess Engine</h1>
 
-# Board constants
-board_size = 8
-square_size = canvas.width / board_size
-WHITE = "#F0D9B5"
-BLACK = "#B58863"
-HIGHLIGHT = "#ADD8E6"
+        <p>
+            <!-- Paragraph 1 -->
+            I built a fully functional chess engine in Python featuring a custom
+            board representation, move generation, evaluation functions, and AI
+            search algorithms. The engine supports human play, AI play, and
+            Stockfish evaluation for comparison.
+        </p>
 
-# Sample board ('.' empty, uppercase=white, lowercase=black)
-board = [
-    ["r","n","b","q","k","b","n","r"],
-    ["p"]*8,
-    ["."]*8,
-    ["."]*8,
-    ["."]*8,
-    ["."]*8,
-    ["P"]*8,
-    ["R","N","B","Q","K","B","N","R"]
-]
+        <p>
+            <!-- Paragraph 2 -->
+            The project emphasizes algorithmic thinking, optimization, and
+            software design. It includes visual rendering with Pygame, move
+            analysis, and statistical tracking to evaluate performance over
+            multiple games.
+        </p>
 
-# Unicode pieces
-pieces_unicode = {
-    "K":"♔","Q":"♕","R":"♖","B":"♗","N":"♘","P":"♙",
-    "k":"♚","q":"♛","r":"♜","b":"♝","n":"♞","p":"♟︎"
-}
+        <div class="download">
+            <a href="files/chess_game.zip" download>
+                ⬇ Download Chess Game Source Code
+            </a>
+        </div>
+    </div>
 
-selected = None
-legal_moves = []
+    <!-- RIGHT: VIDEO -->
+    <div class="video">
+        <video controls>
+            <source src="files/chess_game_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
 
-def draw_board(ev=None):
-    for r in range(board_size):
-        for c in range(board_size):
-            color = WHITE if (r+c)%2==0 else BLACK
-            if selected and (r,c) in legal_moves:
-                color = HIGHLIGHT
-            ctx.fillStyle = color
-            ctx.fillRect(c*square_size, r*square_size, square_size, square_size)
-            
-            piece = board[r][c]
-            if piece != ".":
-                ctx.fillStyle = "black" if piece.islower() else "white"
-                ctx.font = f"{int(square_size*0.8)}px Arial"
-                ctx.fillText(pieces_unicode[piece], c*square_size+5, r*square_size+square_size-10)
-
-draw_board()
-
-# Click handler
-def click(ev):
-    global selected, legal_moves
-    col = int(ev.offsetX / square_size)
-    row = int(ev.offsetY / square_size)
-    piece = board[row][col]
-    
-    if selected:
-        # move piece
-        sr, sc = selected
-        board[row][col] = board[sr][sc]
-        board[sr][sc] = "."
-        selected = None
-        legal_moves = []
-    else:
-        if piece != ".":
-            selected = (row, col)
-            # for demo, allow moving anywhere
-            legal_moves = [(r,c) for r in range(8) for c in range(8)]
-    
-    draw_board()
-
-canvas.bind("click", click)
-</script>
 </body>
 </html>
+
