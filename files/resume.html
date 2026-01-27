@@ -10,21 +10,62 @@
             max-width: 900px;
             margin: 2rem auto;
             padding: 0 1rem;
-            line-height: 1.6;
-            color: #222;
             background: #f7f7f7;
+            color: #222;
         }
-        h1, h2, h3 {
+
+        h1 {
             color: #007acc;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 0;
         }
-        h1 { font-size: 2rem; }
-        h2 { font-size: 1.5rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; margin-top: 2rem; }
-        h3 { font-size: 1.2rem; margin-top: 1rem; }
-        p, li { margin: 0.25rem 0; }
-        ul { margin: 0.25rem 0 1rem 1.5rem; }
-        .contact { font-size: 0.9rem; margin-bottom: 1rem; color: #555; }
-        .section { margin-top: 1.5rem; }
+
+        .contact {
+            margin-bottom: 2rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #007acc;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.25rem;
+            margin-top: 2rem;
+            cursor: pointer;
+        }
+
+        .section-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #007acc;
+        }
+
+        .skills-list, .coursework-list {
+            columns: 2;
+            column-gap: 2rem;
+            list-style-type: disc;
+            padding-left: 1rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -32,67 +73,123 @@
 <h1>Tony Bridge</h1>
 <p class="contact">(435) 357-6837 | <a href="mailto:anthony.r.bridge@gmail.com">anthony.r.bridge@gmail.com</a></p>
 
-<h2>Education</h2>
-<p><strong>Brigham Young University</strong> – Bachelor of Science: Mechanical Engineering, Provo, UT, Apr 2028</p>
-<p>GPA: 3.92 / 4.00 | Scholarship: Merit-Based Half Tuition Academic Scholarship</p>
+<!-- Education -->
+<h2 onclick="toggleSection('education')">Education ▼</h2>
+<div id="education" class="section-content">
+    <p><strong>Brigham Young University</strong> – Bachelor of Science: Mechanical Engineering, Provo, UT, Apr 2028</p>
+    <p>GPA: 3.92 / 4.00 | Scholarship: Merit-Based Half Tuition Academic Scholarship</p>
+</div>
 
-<h2>Engineering Experience</h2>
+<!-- Engineering Experience -->
+<h2 onclick="toggleSection('engineering')">Engineering Experience ▼</h2>
+<div id="engineering" class="section-content">
+    <div class="card">
+        <h3>BYU Compliant Mechanisms and Robotics Group</h3>
+        <p>Undergraduate Research Assistant | May 2025 - Aug 2025</p>
+        <ul>
+            <li>Conducted research on mechanical battery systems, analyzing structural properties and energy storage performance.</li>
+            <li>Created detailed CAD models in Onshape to support prototype design and mechanical analysis.</li>
+            <li>Performed tensile and material testing to evaluate component strength, energy capacity, and mechanical reliability.</li>
+        </ul>
+    </div>
 
-<h3>BYU Compliant Mechanisms and Robotics Group</h3>
-<p>Undergraduate Research Assistant | May 2025 - Aug 2025</p>
-<ul>
-    <li>Conducted research on mechanical battery systems, analyzing structural properties and energy storage performance.</li>
-    <li>Created detailed CAD models in Onshape to support prototype design and mechanical analysis.</li>
-    <li>Performed tensile and material testing to evaluate component strength, energy capacity, and mechanical reliability.</li>
-</ul>
+    <div class="card">
+        <h3>BYU Rocketry Club – High Power Team: Payload Associate Engineer</h3>
+        <p>Aug 2025 - Present</p>
+        <ul>
+            <li>Developing CubeSat-class payload for SDL Payload Challenge.</li>
+            <li>Designing CAD models for a satellite-compatible battery system inspired by BYU CMR Lab research.</li>
+            <li>Conducting materials research for structural stability during flight and recovery.</li>
+        </ul>
 
-<h3>BYU Rocketry Club</h3>
-<p>High Power Team: Payload Associate Engineer | Aug 2025 - Present</p>
-<ul>
-    <li>Contributing to BYU’s entry in IREC, developing a CubeSat-class payload for the SDL Payload Challenge.</li>
-    <li>Designing CAD models for a satellite-compatible battery system inspired by research from the BYU CMR Lab.</li>
-    <li>Conducting materials research to ensure structural stability of payload components during flight and recovery.</li>
-</ul>
+        <h3>Student Launch Competitor</h3>
+        <p>Sep 2024 - Mar 2025</p>
+        <ul>
+            <li>Collaborated in a 3-person team to design a competition rocket targeting 1,700 ft apogee using OpenRocket.</li>
+            <li>Laser-cut and assembled aerodynamic fins and airframe components; contributed to rocket fabrication.</li>
+        </ul>
+    </div>
+</div>
 
-<p>Student Launch Competitor | Sep 2024 - Mar 2025</p>
-<ul>
-    <li>Collaborated in a 3-person team to design a competition rocket targeting a 1,700 ft apogee using OpenRocket.</li>
-    <li>Laser-cut and assembled aerodynamic fins and airframe components; contributed to rocket fabrication.</li>
-</ul>
+<!-- Other Work -->
+<h2 onclick="toggleSection('otherwork')">Other Work Experience ▼</h2>
+<div id="otherwork" class="section-content">
+    <div class="card">
+        <h3>St. George Vacation Rentals – General and Administrative Analyst</h3>
+        <p>Aug 2021 - Aug 2022</p>
+        <ul>
+            <li>Supported general operations through payment processing and housekeeping administration.</li>
+            <li>Tracked and reconciled expenditures and inventory records to maintain accurate budget reporting.</li>
+            <li>Coordinated a team of seven housekeepers, organizing repair and maintenance workflows for damaged items.</li>
+        </ul>
+    </div>
 
-<h2>Other Work Experience</h2>
+    <div class="card">
+        <h3>Chick-fil-A – Shift Lead & Chef</h3>
+        <p>Aug 2020 - Aug 2021</p>
+        <ul>
+            <li>Directed shift operations, leading a team to meet service, quality, and productivity objectives.</li>
+            <li>Managed labor and resource allocation for peak efficiency during high-demand hours.</li>
+            <li>Trained and supported team members to ensure consistent performance and adherence to brand standards.</li>
+        </ul>
+    </div>
+</div>
 
-<h3>St. George Vacation Rentals</h3>
-<p>General and Administrative Analyst | Aug 2021 - Aug 2022</p>
-<ul>
-    <li>Supported general operations through payment processing and housekeeping administration.</li>
-    <li>Tracked and reconciled expenditures and inventory records to maintain accurate budget reporting.</li>
-    <li>Coordinated a team of seven housekeepers, organizing repair and maintenance workflows for damaged items.</li>
-</ul>
+<!-- Volunteer -->
+<h2 onclick="toggleSection('volunteer')">Volunteer Experience ▼</h2>
+<div id="volunteer" class="section-content">
+    <div class="card">
+        <h3>The Church of Jesus Christ of Latter-day Saints – Missionary</h3>
+        <p>Mendoza, Argentina | Jul 2022 - Jul 2024</p>
+        <ul>
+            <li>Led and coordinated missionary teams across multiple areas, ensuring effective collaboration and goal alignment.</li>
+            <li>Trained and supervised new missionaries, improving performance, teaching skills, and cultural engagement.</li>
+            <li>Dedicated full-time service to uplift individuals and communities through teaching and personal outreach.</li>
+        </ul>
+    </div>
+</div>
 
-<h3>Chick-fil-A</h3>
-<p>Shift Lead & Chef | Aug 2020 - Aug 2021</p>
-<ul>
-    <li>Directed shift operations, leading a team of employees to meet service, quality, and productivity objectives.</li>
-    <li>Managed labor organization and resource allocation to maintain peak efficiency during high-demand hours.</li>
-    <li>Trained and supported team members to ensure consistent performance and adherence to brand standards.</li>
-</ul>
+<!-- Skills -->
+<h2 onclick="toggleSection('skills')">Skills & Interests ▼</h2>
+<div id="skills" class="section-content">
+    <ul class="skills-list">
+        <li>SolidWorks</li>
+        <li>Onshape</li>
+        <li>Python</li>
+        <li>3D Printing</li>
+        <li>Arduino</li>
+        <li>Laser Cutting</li>
+        <li>Soldering</li>
+        <li>Welding</li>
+        <li>Metalworking</li>
+        <li>Google Sheets</li>
+        <li>Excel</li>
+    </ul>
+    <h3>Relevant Coursework</h3>
+    <ul class="coursework-list">
+        <li>Intro to Electrical Engineering</li>
+        <li>Linear Algebra</li>
+        <li>Statics</li>
+        <li>Dynamics</li>
+        <li>Intro to Waves, Optics, Thermodynamics</li>
+        <li>Mechanics of Materials</li>
+    </ul>
+</div>
 
-<h2>Volunteer Experience</h2>
+<footer>
+    <p>© 2026 Tony Bridge</p>
+</footer>
 
-<h3>The Church of Jesus Christ of Latter-day Saints</h3>
-<p>Missionary | Mendoza, Argentina | Jul 2022 - Jul 2024</p>
-<ul>
-    <li>Led and coordinated missionary teams across multiple areas, ensuring effective collaboration and goal alignment.</li>
-    <li>Trained and supervised new missionaries, improving performance, teaching skills, and cultural engagement.</li>
-    <li>Dedicated full-time service to uplift individuals and communities through teaching and personal outreach.</li>
-</ul>
-
-<h2>Skills & Interests</h2>
-<ul>
-    <li>Skills: SolidWorks, Onshape, Python, 3D Printing, Arduino, Laser Cutting, Soldering, Welding, Metalworking, Google Sheets, Excel</li>
-    <li>Relevant Coursework: Intro to Electrical Engineering, Linear Algebra, Statics, Dynamics, Intro to Waves, Optics and Thermodynamics, Mechanics of Materials</li>
-</ul>
+<script>
+    function toggleSection(id) {
+        const section = document.getElementById(id);
+        if (section.style.display === "block") {
+            section.style.display = "none";
+        } else {
+            section.style.display = "block";
+        }
+    }
+</script>
 
 </body>
 </html>
