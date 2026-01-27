@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Name | Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Your Name</h1>
+    <p class="tagline">Engineering Student | Python & Mechanical Design</p>
+
+    <nav>
+        <a href="https://github.com/yourusername">GitHub</a>
+        <a href="resume.pdf">Resume</a>
+        <a href="mailto:youremail@example.com">Email</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Projects</h2>
+
+    <section class="projects">
+
+        <div class="project-card">
+            <img src="images/project1.png" alt="Project image">
+            <h3>Python Chess Game</h3>
+            <p>Fully functional chess engine with move validation and GUI.</p>
+            <a href="https://github.com/yourusername/chess-project">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+            <img src="images/project2.png" alt="Project image">
+            <h3>Planetary Spring Mechanism</h3>
+            <p>Mechanical energy storage system designed and simulated in Onshape.</p>
+            <a href="#">Project Details</a>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Your Name</p>
+</footer>
+
+</body>
+</html>
