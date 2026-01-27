@@ -28,51 +28,38 @@
 <!-- Your Python code -->
 <script type="text/python">
   
-'''
-Next steps
-pygame use more processing power
-increase points for open and partially open files for rooks
-add directive that discourages trading when you are lower in material and when you are attacking
-check certain moves deeper? try to predict decisive deep tactics and make the AI look deeper in them.
-- If in check?
-- if piece moved towards opponent side of board?
-- if pawn can fork? (for pawn in pieces if pawn -2 +1 and -2 -1 and not -1)
-record TT for use in later moves (maybe one list per color move?)
-put TT in new document after finishing a game so it runs faster next game
-better move rating
-- subtract half value of a piece if attacked by a pawn
-- add for knight in fortress (cant be attacked by pawn in one move and supported by a pawn)
-add more moves to check in qdepth (check?)
-more comprehensive move ordering
-put more complicated and advanced evaluate in early depth and qsearch
-what does history do? why is it 64 long?
-look at checks first, attacked by pawn
-punish moving same piece twice
-piece vision
-punish moving the king without castling
-use optimization to remake the chess.com evaluation function
-higher q level in beginning, then higher depth at end
-Elo ≈ a·accuracy² + b·ACPL + c·blunders + d·critical_errors + e
-look for weaknesses. and protect
+from browser import document, html, timer
 
+# Get the canvas
+canvas = document["chess-canvas"]
+ctx = canvas.getContext("2d")
 
-Observations:
-cannot see trapped pieces in q search
+# Board setup
+board_size = 8
+square_size = canvas.width / board_size
 
+# Draw board
+def draw_board():
+    for row in range(board_size):
+        for col in range(board_size):
+            color = "#F0D9B5" if (row+col)%2 == 0 else "#B58863"
+            ctx.fillStyle = color
+            ctx.fillRect(col*square_size, row*square_size, square_size, square_size)
 
-Bugs
-check mechanics messed up. does not capture to escape check
-make sure endgame eval does what it should
-something wrong with mate eval. It doesnt play it
+draw_board()
 
+# Example: place a piece (just text for now)
+ctx.fillStyle = "black"
+ctx.font = f"{int(square_size*0.8)}px Arial"
+ctx.fillText("♞", 1*square_size+5, 0*square_size + square_size - 10)
 
-Notes
-if blundering, check null moves
+# Add interactivity: click to log square
+def click_handler(ev):
+    col = int(ev.offsetX / square_size)
+    row = int(ev.offsetY / square_size)
+    print(f"Clicked row {row}, col {col}")
 
-
-
-
-'''
+canvas.bind("click", click_handler)
 
 #region ---------------- INITIALIZE BOARD ----------------
 visuals_enabled = True
