@@ -23,23 +23,38 @@
         }
 
         .text {
-            flex: 1;
+            flex: 1.1;
         }
 
         .video {
-            flex: 1;
+            flex: 0.9;
         }
 
         h1 {
             margin-top: 0;
         }
 
+        h2 {
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+
         p {
             line-height: 1.6;
         }
 
+        ul {
+            margin-top: 8px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
         .download {
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .download a {
@@ -62,7 +77,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        /* Mobile layout */
         @media (max-width: 900px) {
             .container {
                 flex-direction: column;
@@ -74,29 +88,56 @@
 <body>
 
 <div class="container">
+
     <!-- LEFT: DESCRIPTION -->
     <div class="text">
         <h1>Python Chess Engine</h1>
 
         <p>
-            <!-- Paragraph 1 -->
-            I built a fully functional chess engine in Python featuring a custom
-            board representation, move generation, evaluation functions, and AI
-            search algorithms. The engine supports human play, AI play, and
-            Stockfish evaluation for comparison.
+            I developed a fully independent chess engine in Python, implementing
+            custom board representation, move generation, search algorithms, and
+            evaluation logic from the ground up. The engine supports human play,
+            AI play, and performance analysis across multiple games.
         </p>
 
         <p>
-            <!-- Paragraph 2 -->
-            The project emphasizes algorithmic thinking, optimization, and
-            software design. It includes visual rendering with Pygame, move
-            analysis, and statistical tracking to evaluate performance over
-            multiple games.
+            The engine functions independently of external chess programs.
+            The <code>chess</code> library and Stockfish are imported strictly for
+            comparison and evaluation purposes (e.g., translating positions or
+            benchmarking move quality), not for gameplay or decision-making.
         </p>
+
+        <h2>Search & Optimization Techniques</h2>
+        <ul>
+            <li>Iterative deepening move search</li>
+            <li>Alpha–beta pruning</li>
+            <li>Aspiration (search depth) windows</li>
+            <li>Quiescent search for tactical stability</li>
+            <li>Move ordering heuristics</li>
+            <li>Killer move heuristic</li>
+            <li>Zobrist hashing</li>
+            <li>Transposition table</li>
+            <li>Opening database integration</li>
+        </ul>
+
+        <h2>Evaluation Function (Centipawns)</h2>
+        <ul>
+            <li>Material values (P=100, N=300, etc.)</li>
+            <li>Piece-square tables for positional value</li>
+            <li>Pawn structure analysis
+                <ul>
+                    <li>Penalizes doubled and isolated pawns</li>
+                    <li>Rewards passed pawns</li>
+                </ul>
+            </li>
+            <li>Rewards rooks on open files</li>
+            <li>Rewards knights on strong outposts</li>
+            <li>Endgame heuristics (king activity, simplified positions)</li>
+        </ul>
 
         <div class="download">
             <a href="files/chess_game.zip" download>
-                ⬇ Download Chess Game Source Code
+                ⬇ Download Chess Engine Source Code
             </a>
         </div>
     </div>
@@ -108,8 +149,8 @@
             Your browser does not support the video tag.
         </video>
     </div>
+
 </div>
 
 </body>
 </html>
-
